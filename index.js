@@ -1,5 +1,7 @@
 //*Symbol Conversion dictionary
 const symConv = { "Multiplication": "*", "Subtraction": "-", "Addition": "+", "Division": "/" }
+//*Multiply by one
+const MultByOne = false
 //*Target integer
 const target = 405
 //*Numbers array
@@ -33,7 +35,6 @@ function helper(actives, operations, depth) {
         return;
     }
     //* append the active array to the visited array
-    // !Uncomment after
     visited.push(actives)
     //* Loop over all possible number combinations in the actives array
     for (let i = 0; i < actives.length; i++) {
@@ -58,8 +59,8 @@ function helper(actives, operations, depth) {
                 // console.log("End:" + newActives)
                 helper(newActives, newOperations, depth + 1)
             }
-            //Multiplication, always
-            if (true) {
+            //Multiplication, if one of the elements isn't one
+            if ((firstEl != 1 && secondEl != 1) || MultByOne) {
                 let newActives = structuredClone(actives);
                 let newOperations = structuredClone(operations);
                 let product = firstEl * secondEl
